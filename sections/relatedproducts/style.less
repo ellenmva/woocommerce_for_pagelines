@@ -1,5 +1,13 @@
-.section-relatedproducts {
+ #page .section-relatedproducts {
 	.hentry {
 		clear: none;
 		}
+	/* Force 3 columns on Related Products */	
+	.related {	
+		ul.products li {
+			.makeColumn(3);
+			margin: 10px 0 10px 15px;
+			clear: none;		
+		}
+	}
 }

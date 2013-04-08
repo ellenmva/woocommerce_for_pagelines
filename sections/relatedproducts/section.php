@@ -18,12 +18,12 @@ class PageLinesRelatedProducts extends PageLinesSection {
 	 * Section template.
 	 */
 	function section_template() { 
-
+		 // Display 3 products in rows of 3
 		?>
 		<div class="post-footer">
 			<div class="post-footer-pad">
 			
-				<?php woocommerce_output_related_products(); ?>
+				<?php woocommerce_related_products(3,3); ?>
 			
 				<div class="clear"></div>
 			</div>

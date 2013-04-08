@@ -1,13 +1,13 @@
 <?php
 /*
 	Section: ProductContent
-	Author: Mike Jolley
-	Author URI: http://mikejolley.com
+	Author: Ellen Moore
+	Author URI: http://pagelines.ellenjanemoore.com
 	Description: Main site content area. Holds sidebars, page content, etc.. 
 	Class Name: PageLinesProductContent
 	Workswith: templates
 	Cloning: false
-	Failswith: 404
+	Failswith: pagelines_special_pages()
 	Version: 1.0
 */
 

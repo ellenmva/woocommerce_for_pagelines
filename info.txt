@@ -1,0 +1,22 @@
+== Description ==
+
+Easily integrate the popular WooCommerce plugin with Pagelines.
+
+This plugin adds several sections to Pagelines specifically for WooCommerce:
+* Breadcrumbs
+* Product content
+* Product loop
+* Product pagination
+* Related products
+* Upsells
+
+Add Pagelines Sections to your Product Archive and Product Pages.
+
+Buttons and Tabs have Pagelines styles but uses color controls from WooCommerce Settings. 
+
+This plugin is free for all to use and to encourage developers to develop WooCommerce sections and themes.
+
+== Changelog ==
+
+= 1.0  =
+* Initial Release

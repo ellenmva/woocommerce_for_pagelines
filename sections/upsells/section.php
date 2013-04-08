@@ -1,8 +1,8 @@
 <?php
 /*
 	Section: Upsells
-	Author: Mike Jolley
-	Author URI: http://mikejolley.com
+	Author: Ellen Jane Moore
+	Author URI: http://pagelines.ellenjanemoore.com
 	Description: Upsells
 	Class Name: PageLinesUpsells
 	Workswith: product

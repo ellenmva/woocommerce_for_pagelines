@@ -1,5 +1,106 @@
 .section-productloop{
+
 	.hentry {
-		clear: none;
+		clear: none; /* Fix for columns not rendering */
+		}
+	 input[type="number"] {
+	 	margin-bottom: 0;
+	 }
+	 /* Move label background onto label */
+	.label {
+	 	background: none;
+	 }
+	.label label, .variations label {
+		color: @secondarytext;
+		vertical-align: top;
+		white-space: nowrap;
+		text-shadow: 0 -1px 0 rgba(0,0,0,.35);
+		background-color: @woo-secondary;
+		padding: 5px;
+		.border-radius(3px);
+	 }	
+
+	/* Formatting for Product Tabs */
+
+	.nav-tabs {
+		border-bottom: 1px solid darken(@woo-secondary, 6);
 	}
+
+	
+	.nav-tabs > li {
+		margin-bottom: -1px;
+	}
+
+	
+	.nav-tabs > li > a {
+		color: @pl-text;
+	  padding-top: 8px;
+	  padding-bottom: 8px;
+	  line-height: @baseLineHeight;
+	  border: 1px solid @woo-secondary;
+	  .border-radius(4px 4px 0 0);
+	  &:hover {
+	    #gradient > .vertical( @woo-secondary, darken( @woo-secondary, 10 ) );
+	    border-color: darken(@woo-secondary, 6);
+	  }
+	}
+	
+	.nav-tabs > .active > a,
+	.nav-tabs > .active > a:hover {
+	  color: lighten( @pl-text, 20 );
+	  #gradient > .vertical( @woo-secondary, darken( @woo-secondary, 10 ) );
+	  border: 1px solid darken(@woo-secondary, 6);
+	  border-bottom-color: transparent;
+	  cursor: default;
+	}
+
+	.tab-content {
+		background: @woo-contentbg;
+		padding: 10px;
+
+	}
+		
+		
 }
+
+
+
+@media (max-width: 480px)  {
+	#page {
+
+	/* Product Images and Summary */
+	.product  {
+		.images {
+			width: 100%;
+			}
+		.summary {
+			float: left;
+			width: 100%;
+			}
+		}
+		/* Product Archive images */
+		li.product {
+		width:48%;
+		float: left;
+		clear: both;
+		margin: 0 0 2.992em 0;
+		&:nth-child(2n) {
+			float: right;
+			clear: none;
+			}
+		}
+
+	}
+
+	/* prettyPhoto styling for small screens */
+	.pp_pic_holder.pp_woocommerce { width: 100%!important; left: 0!important; overflow: hidden; }
+	div.pp_woocommerce .pp_content_container .pp_left { padding-left: 0!important; }
+	div.pp_woocommerce .pp_content_container .pp_right { padding-right: 0!important; }
+	.pp_content { width: 100%!important; height: auto!important; }
+	.pp_fade { width: 100%!important; height: 100%!important; }
+	a.pp_expand, a.pp_contract, .pp_hoverContainer, .pp_gallery, .pp_top, .pp_bottom { display: none!important; }
+	#pp_full_res img { width: 100%!important; height: auto!important; }
+	.pp_details { width: 94%!important; padding-left: 3%; padding-right: 4%; padding-top: 10px; padding-bottom: 10px; background-color: #fff; margin-top: -2px!important; }
+	a.pp_close { right: 10px!important; top: 10px!important; }
+}
+

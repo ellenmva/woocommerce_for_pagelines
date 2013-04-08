@@ -1,8 +1,8 @@
 <?php
 /*
 	Section: ProductLoop
-	Author: Mike Jolley
-	Author URI: http://mikejolley.com
+	Author: Ellen Moore
+	Author URI: http://pagelines.ellenjanemoore.com
 	Description: The Main Products Loop. Includes content and product information.
 	Class Name: PageLinesProductLoop	
 	Workswith: product, product_archive
@@ -13,6 +13,8 @@
  * Main Products Loop Section
  */
 class PageLinesProductLoop extends PageLinesSection {
+
+
 		
 	/**
 	 * Section template.
@@ -76,14 +78,25 @@ class PageLinesProductLoop extends PageLinesSection {
 							<?php woocommerce_product_loop_start(); ?>
 
 				<?php woocommerce_product_subcategories(); ?>
-
+				
+				
 				<?php while ( have_posts() ) : the_post(); ?>
-
+				
+				
 					<?php woocommerce_get_template_part( 'content', 'product' ); ?>
-
+				
 				<?php endwhile; // end of the loop. ?>
+				
 
 			<?php woocommerce_product_loop_end(); ?>
+			<?php
+				/**
+				 * woocommerce_after_shop_loop hook
+				 *
+				 * @hooked woocommerce_pagination - 10
+				 */
+				do_action( 'woocommerce_after_shop_loop' );
+			?>
 
 						</div>
 					</div>

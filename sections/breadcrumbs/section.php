@@ -1,8 +1,8 @@
 <?php
 /*
 	Section: WC Breadcrumbs
-	Author: Mike Jolley
-	Author URI: http://mikejolley.com
+	Author: Ellen Moore
+	Author URI: http://pagelines.ellenjanemoore.com
 	Description: WooCommerce Breadcrumbs
 	Class Name: PageLinesWCBreadcrumbs
 	Workswith: product_archive, product

@@ -1,8 +1,8 @@
 <?php
 /*
 	Section: ProductPagination
-	Author: Mike Jolley
-	Author URI: http://mikejolley.com
+	Author: Ellen Moore
+	Author URI: http://pagelines.ellenjanemoore.com
 	Description: Product Pagination - A numerical product navigation. (Supports WP-PageNavi)
 	Class Name: PageLinesProductPagination
 	Workswith: product_archive

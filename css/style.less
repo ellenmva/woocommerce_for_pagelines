@@ -1,13 +1,87 @@
-a.button, button.button, input.button, #respond input#submit, #content input.button {    
-	&.loading {    
-		&:before {			
-			background: url(../images/ajax-loader.gif) center no-repeat;
-		}
-	}
+
+@primarytext: 	desaturate(lighten(@woo-primary,50%),18%);
+@secondarytext: desaturate(darken(@woo-secondary,60%),18%);
+@highlightext:	desaturate(darken(@woo-highlight,60%),18%);
+
+
+.demo-message {
+	margin-top: 37px; /* correct demo message positioning */
+}
+
+/* Button Styling */
+
+input[type="submit"]#searchsubmit {
+		vertical-align: top;
+		color: @pl-text;
+		#gradient > .vertical(@woo-secondary, darken( @woo-secondary, 10 ));
+		border: 1px solid @woo-secondary;
+		border-bottom-color: darken( @woo-secondary, 10 );
 	
-	&.added {
-		&:before {
-			background: url(../images/success.png) no-repeat;
+	}
+table.cart input[type="submit"] {
+		color: @pl-text;
+		padding: 6px 9px;
+		#gradient > .vertical(@woo-secondary, darken( @woo-secondary, 10 ));
+		border: 1px solid @woo-secondary;
+		border-bottom-color: darken( @woo-secondary, 10 );
+
+	}		
+
+.woocommerce #page {
+	
+	.btn {
+ 
+		text-shadow:0 1px 0 @woo-secondary + #111;
+	    color: @secondarytext;
+		.buttonBackground(@woo-secondary, darken( @woo-secondary, 10 ));
+		border: 1px solid @woo-secondary;
+		border-bottom-color: darken( @woo-secondary, 10 );
+		
+		&.alt {
+			.buttonBackground(@woo-primary, darken( @woo-primary, 10 ));
+			border: 1px solid @woo-secondary;
+			border-bottom-color: darken( @woo-primary, 10 );
+			color: @primarytext;
+			
+			&:hover {
+				.buttonBackground( @woo-primary, darken( @woo-primary, 15 ) );
+				color:@primarytext + #111;
+				}	
+			}
+
+		}
+	
+}
+
+@media (max-width: 480px)  {
+	#page {
+	/* Reduce size to fit viewport */
+		 table.cart {
+			zoom: .95; 
+		}
+		/* Columns 100% wide on forms */
+		.col2-set {
+			
+			.col-1 {
+				float:left;
+				width: 100%;
+			}
+			.col-2 {
+				float: left;
+				width: 100%;
+			}
+		}
+		.form-row-first, .form-row-last {
+			float:left;
+			width: 100%;
+			overflow: visible;
+		}
+		.form-row-last {
+			float: left;
 		}
 	}
 }
+	
+
+
+ 

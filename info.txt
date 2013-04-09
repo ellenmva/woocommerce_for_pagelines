@@ -12,7 +12,7 @@ This plugin adds several sections to Pagelines specifically for WooCommerce:
 
 Add Pagelines Sections to your Product Archive and Product Pages.
 
-Buttons and Tabs have Pagelines styles but uses color controls from WooCommerce Settings. 
+Buttons and Tabs have Pagelines styles while using color controls from WooCommerce Settings. 
 
 This plugin is free for all to use and to encourage developers to develop WooCommerce sections and themes.
 

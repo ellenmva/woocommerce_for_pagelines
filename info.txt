@@ -16,7 +16,13 @@ Buttons and Tabs have Pagelines styles while using color controls from WooCommer
 
 This plugin is free for all to use and to encourage developers to develop WooCommerce sections and themes.
 
+<strong>PageLines Sections LESS/CSS error</strong> may happen when you first activate plugin. To fix, go into WooCommerce -> Settings -> General and Save Options. Next go to Pagelines -> Site Options and Save Options. Refresh the page and error should be gone.
+
+
 == Changelog ==
+
+= 1.01  =
+* Set Woocommerce default colors in LESS  
 
 = 1.0  =
 * Initial Release

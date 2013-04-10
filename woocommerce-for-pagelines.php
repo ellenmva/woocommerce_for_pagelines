@@ -8,7 +8,7 @@
 	Demo: http://www.pagelines.ellenjanemoore.com/woocommerce
 	PageLines: true
 	Tags: extension
-	Version: 1.0
+	Version: 1.01
 
 	Thanks to Mike Jolly, http://mikejolley.com, for creating this plugin to build upon.
 	
@@ -245,6 +245,12 @@ class WC_Pagelines {
 		global $woocommerce_settings;
 		
 		$colors = get_option( 'woocommerce_frontend_css_colors' );
+				if ( empty( $colors['primary'] ) ) $colors['primary'] = '#ad74a2';
+				if ( empty( $colors['secondary'] ) ) $colors['secondary'] = '#f7f6f7';
+				if ( empty( $colors['highlight'] ) ) $colors['highlight'] = '#85ad74';
+				if ( empty( $colors['content_bg'] ) ) $colors['content_bg'] = '#ffffff';
+	            if ( empty( $colors['subtext'] ) ) $colors['subtext'] = '#777777';
+
 
 		$less['woo-primary']  = $colors['primary'];
 		$less['woo-secondary']  = $colors['secondary'];

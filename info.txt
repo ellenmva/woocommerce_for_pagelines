@@ -1,6 +1,8 @@
 == Description ==
 
-Easily integrate the popular WooCommerce plugin with Pagelines.
+Easily integrate the popular WooCommerce plugin with Pagelines. 
+
+<strong> Note:</strong> To use this plugin you need to have the <a href="http://wordpress.org/extend/plugins/woocommerce/" target="_blank" title="WooCommerce">WooCommerce</a> plugin installed.
 
 This plugin adds several sections to Pagelines specifically for WooCommerce:
 * Breadcrumbs
@@ -16,10 +18,13 @@ Buttons and Tabs have Pagelines styles while using color controls from WooCommer
 
 This plugin is free for all to use and to encourage developers to develop WooCommerce sections and themes.
 
-<strong>PageLines Sections LESS/CSS error</strong> may happen when you first activate plugin. To fix, go into WooCommerce -> Settings -> General and Save Options. Next go to Pagelines -> Site Options and Save Options. Refresh the page and error should be gone.
+<strong>Support is only for the WooCommerce for Pagelines plugin.</strong> WooCommerce for Pagelines makes the Pagelines framework and WooCommerce plugin work well together. Support for WooCommerce can be found on their website <a href="http://www.woothemes.com/woocommerce/" target="_blank" title="WooCommerce">http://www.woothemes.com/woocommerce/</a>.
 
 
 == Changelog ==
+
+= 1.02  =
+* Removed Your theme does not declare WooCommerce support message
 
 = 1.01  =
 * Set Woocommerce default colors in LESS  

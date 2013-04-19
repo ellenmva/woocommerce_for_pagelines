@@ -8,7 +8,7 @@
 	Demo: http://www.pagelines.ellenjanemoore.com/woocommerce
 	PageLines: true
 	Tags: extension
-	Version: 1.01
+	Version: 1.02
 
 	Thanks to Mike Jolly, http://mikejolley.com, for creating this plugin to build upon.
 	
@@ -76,7 +76,8 @@ class WC_Pagelines {
 		//Remove Woocommerce Tabs and Add Pagelines Tabs
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 		add_action( 'woocommerce_after_single_product_summary', array( &$this,'new_woocommerce_tabs'), 10);
-	
+		add_theme_support( 'woocommerce' );
+		
 		
 	}
 

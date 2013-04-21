@@ -8,7 +8,7 @@
 	Demo: http://www.pagelines.ellenjanemoore.com/woocommerce
 	PageLines: true
 	Tags: extension
-	Version: 1.02
+	Version: 1.1
 
 	Thanks to Mike Jolly, http://mikejolley.com, for creating this plugin to build upon.
 	
@@ -43,16 +43,19 @@ class WC_Pagelines {
 
 			add_filter( 'postsmeta_settings_array', array( &$this, 'woocommerce_meta' ) );
 			add_filter( 'postmeta_settings_array', array( &$this, 'woocommerce_templates' ) );
-		} 	
+		} 
+		add_action( 'pagelines_setup', array( &$this, 'wc_pagelines_options' ));	
 		add_filter( 'postmeta_settings_array', array( &$this, 'woocommerce_product_meta' ) );
     	add_action( 'woocommerce_admin_css', array( &$this,'my_deregister_styles' ));
-		add_action('wp_head', array( &$this,'pagelines_woocommerce_scripts'));
+		 add_action('wp_head', array( &$this,'pagelines_woocommerce_scripts'));
 		// add_action('wp_head', 'woocommerce_output_related_products');
 		add_filter( 'the_sub_templates', array( &$this, 'woocommerce_the_sub_templates'), 10, 2 );
 		add_filter( 'pagelines_sections_dirs', array( &$this, 'woocommerce_pagelines_sections_dirs') );	
 		add_filter( 'pagelines_lesscode', array( &$this, 'get_less' ), 10, 1 );
 		add_action( 'template_redirect', array( &$this, 'woocommerce_integration' ), 10, 1  );			
 		add_filter( 'pless_vars', array(&$this,'pagelines_woocommerce_less_vars'));
+		
+		
 		add_action( 'init', array(&$this, 'init') );
 		}
 	
@@ -73,9 +76,13 @@ class WC_Pagelines {
 		// Remove upsells (we have them in a section)
 		remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display' , 15);
 	
+		if(ploption('woocommerce_pagelines_style')) {
+			return;
+		}else {
 		//Remove Woocommerce Tabs and Add Pagelines Tabs
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 		add_action( 'woocommerce_after_single_product_summary', array( &$this,'new_woocommerce_tabs'), 10);
+		}
 		add_theme_support( 'woocommerce' );
 		
 		
@@ -103,6 +110,15 @@ class WC_Pagelines {
 				// Remove first and last classes from Related Products and Upsells
 				jQuery(".related .products .product").removeClass("first").removeClass("last");
 				jQuery(".upsells .products .product").removeClass("first").removeClass("last");
+				});
+			</script>
+			<?php
+			if(ploption('woocommerce_pagelines_style')) {
+				return;
+			} else {
+			?>
+			<script>
+			jQuery(document).ready(function(){	
 				// Add Active classes for Pagelines Wootabs
 				jQuery("#woo-tabs li:first").addClass("active");
 				jQuery(".tab-content .tab-pane:first").addClass("active");
@@ -121,7 +137,7 @@ class WC_Pagelines {
 				});
 			</script>
 			<?php
-		
+			}
 		
 	}
 
@@ -284,6 +300,34 @@ class WC_Pagelines {
 			return false;
 			
 		return true;
+	}
+
+	function wc_pagelines_options(){
+
+
+		
+
+		$options = array(
+				'woocommerce_pagelines_style'			=> array(
+					'title' 		=> __( 'Pagelines Styling', 'wc_pagelines' ),						
+					'shortexp' 		=> __( 'Disable Styles set by WooCommerce for Pagelines plugin', 'wc_pagelines' ),
+					'exp' 			=> __( 'WooCommerce for Pagelines uses Pagelines/Bootstrap styled buttons and tabs. The colors are still the colors from WooCommerce -> Settings -> General Settings. Check the box to disable Pagelines styles and use all WooCommerce styling.', 'wc_pagelines' ),
+					'type' 			=> 	'check',
+					
+					
+					'inputlabel' => __('Disable Pagelines Styling for Buttons and Tabs?' , 'wc_pagelines'),
+
+						
+					)
+		);
+		$option_args = array(
+			'name'		=> 'WC_Pagelines',
+			'array'		=> $options,
+			'icon'	=> $this->base_url.'/icon.png',
+			'position'	=> 9
+		);
+
+		pl_add_options_page( $option_args );
 	}
 }
 

@@ -20,8 +20,19 @@ This plugin is free for all to use and to encourage developers to develop WooCom
 
 <strong>Support is only for the WooCommerce for Pagelines plugin.</strong> WooCommerce for Pagelines makes the Pagelines framework and WooCommerce plugin work well together. Support for WooCommerce can be found on their website <a href="http://www.woothemes.com/woocommerce/" target="_blank" title="WooCommerce">http://www.woothemes.com/woocommerce/</a>.
 
+<strong>If products still displaying in single column after activating the plugin do this:</strong>
+
+1) Go to WooCommerce -> Settings -> General Settings and scroll down and Save Options
+
+2) Go to Pagelines -> Site Options and click on Save Options
+
+Now view page and should be in order. If still have a problem post in the Pagelines Forum or contact me using the contact button.
+
 
 == Changelog ==
+
+= 1.1  =
+* Added ability to turn off Pagelines/Bootstrap buttons and tabs under Site Options
 
 = 1.02  =
 * Removed Your theme does not declare WooCommerce support message

@@ -30,6 +30,8 @@ Now view page and should be in order. If still have a problem post in the Pageli
 
 
 == Changelog ==
+= 1.101  =
+* Fixed error - Added check to make sure Pagelines is active
 
 = 1.1  =
 * Added ability to turn off Pagelines/Bootstrap buttons and tabs under Site Options

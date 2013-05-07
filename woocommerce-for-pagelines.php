@@ -8,7 +8,7 @@
 	Demo: http://www.pagelines.ellenjanemoore.com/woocommerce
 	PageLines: true
 	Tags: extension
-	Version: 1.1
+	Version: 1.101
 
 	Thanks to Mike Jolly, http://mikejolley.com, for creating this plugin to build upon.
 	
@@ -66,7 +66,8 @@ class WC_Pagelines {
 		global $woocommerce;
 		
 		if ( ! class_exists( 'woocommerce' ) ) return;
-		
+		if ( ! function_exists( 'ploption' ) )
+			return;
 		// Prevent woocommerce templates being loaded
 		remove_filter( 'template_include', array( &$woocommerce, 'template_loader' ) );
 		

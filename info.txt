@@ -30,6 +30,9 @@ Now view page and should be in order. If still have a problem post in the Pageli
 
 
 == Changelog ==
+= 1.2  =
+* Fixed urls for ssl https
+
 = 1.101  =
 * Fixed error - Added check to make sure Pagelines is active
 

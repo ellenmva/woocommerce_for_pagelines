@@ -8,7 +8,7 @@
 	Demo: http://www.pagelines.ellenjanemoore.com/woocommerce
 	PageLines: true
 	Tags: extension
-	Version: 1.101
+	Version: 1.2
 
 	Thanks to Mike Jolly, http://mikejolley.com, for creating this plugin to build upon.
 	
@@ -34,10 +34,10 @@ class WC_Pagelines {
 	 */
 	function __construct() {
 
+		$this->base_url = plugins_url( '', __FILE__  );
+		$this->base_dir = plugin_dir_path( '', __FILE__  );
+		$this->base_file = plugin_dir_path( '', __FILE__  );
 
-		$this->base_url = sprintf( '%s/%s', WP_PLUGIN_URL,  basename( dirname( __FILE__ ) ) );
-		$this->base_dir = sprintf( '%s/%s', WP_PLUGIN_DIR,  basename( dirname( __FILE__ ) ) );
-		$this->base_file = sprintf( '%s/%s/%s', WP_PLUGIN_DIR,  basename(dirname( __FILE__ )), basename( __FILE__ ));
 		
 		if ( is_admin() ) {
 

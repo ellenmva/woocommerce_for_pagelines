@@ -8,7 +8,7 @@
 	Demo: http://www.pagelines.ellenjanemoore.com/woocommerce
 	PageLines: true
 	Tags: extension
-	Version: 1.2
+	Version: 1.3
 
 	Thanks to Mike Jolly, http://mikejolley.com, for creating this plugin to build upon.
 	

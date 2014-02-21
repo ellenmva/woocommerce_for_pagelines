@@ -28,6 +28,8 @@ load_plugin_textdomain('wc_pagelines', false, dirname( plugin_basename( __FILE__
  * WC Pagelines Class
  **/
 class WC_Pagelines {
+
+	
 	
 	/**
 	 * Construct
@@ -44,20 +46,22 @@ class WC_Pagelines {
 			add_filter( 'postsmeta_settings_array', array( &$this, 'woocommerce_meta' ) );
 			add_filter( 'postmeta_settings_array', array( &$this, 'woocommerce_templates' ) );
 		} 
+				
 		add_action( 'pagelines_setup', array( &$this, 'wc_pagelines_options' ));	
 		add_filter( 'postmeta_settings_array', array( &$this, 'woocommerce_product_meta' ) );
     	add_action( 'woocommerce_admin_css', array( &$this,'my_deregister_styles' ));
-		 add_action('wp_head', array( &$this,'pagelines_woocommerce_scripts'));
-		// add_action('wp_head', 'woocommerce_output_related_products');
+		add_action('wp_head', array( &$this,'pagelines_woocommerce_scripts'));
 		add_filter( 'the_sub_templates', array( &$this, 'woocommerce_the_sub_templates'), 10, 2 );
 		add_filter( 'pagelines_sections_dirs', array( &$this, 'woocommerce_pagelines_sections_dirs') );	
 		add_filter( 'pagelines_lesscode', array( &$this, 'get_less' ), 10, 1 );
+		
+		add_action('admin_enqueue_scripts', array( $this, 'head_css' ));
 		add_action( 'template_redirect', array( &$this, 'woocommerce_integration' ), 10, 1  );			
 		add_filter( 'pless_vars', array(&$this,'pagelines_woocommerce_less_vars'));
-		
-		
 		add_action( 'init', array(&$this, 'init') );
+
 		}
+	
 	
 	/**
 	 * Init the integration
@@ -65,11 +69,13 @@ class WC_Pagelines {
 	function init() {
 		global $woocommerce;
 		
-		if ( ! class_exists( 'woocommerce' ) ) return;
+
+		
+		if ( ! class_exists( 'WooCommerce' ) ) return;
 		if ( ! function_exists( 'ploption' ) )
 			return;
 		// Prevent woocommerce templates being loaded
-		remove_filter( 'template_include', array( &$woocommerce, 'template_loader' ) );
+		 add_action('init', array($this, 'disable_wc_template_loader'), 15);
 		
 		// Remove related products (we have them in a section)
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
@@ -141,6 +147,54 @@ class WC_Pagelines {
 			}
 		
 	}
+
+	function disable_wc_template_loader() {
+ 
+                /* Disable WooCommerce template loading */
+                global $woocommerce;
+ 
+                remove_filter('template_include', array(&$woocommerce, 'template_loader'));
+                add_filter('template_include', array(&$this, 'template_loader'));
+ 
+        }
+ 
+
+ 
+    function template_loader($template) {
+
+    	// Load PageLines Templates
+
+            global $woocommerce;
+            $classes = get_body_class();
+					
+            
+            if ( is_single() && get_post_type() == 'product' ) {
+						$pl_template = setup_pagelines_template();
+                    
+
+            } elseif ( is_tax( 'product_cat' ) || is_tax( 'product_tag' ) ) {
+
+                    $pl_template = setup_pagelines_template();
+
+            } elseif ( is_post_type_archive( 'product' ) || is_page( woocommerce_get_page_id( 'shop' ) ) ) {
+
+                  $pl_template = setup_pagelines_template();
+
+            } elseif (in_array('woocommerce',$classes))  {
+            	$pl_template = setup_pagelines_template();
+            } 
+
+ 			if (in_array('woocommerce',$classes) ) {
+				$template       = $pl_template;
+				$status_options = get_option( 'woocommerce_status_options', array() );
+				if ( ! $template || ( ! empty( $status_options['template_debug_mode'] ) && current_user_can( 'manage_options' ) ) )
+					$template = $pl_template;
+			}
+         
+           
+            return $template;
+
+    }
 
 	
 	/**
@@ -214,16 +268,22 @@ class WC_Pagelines {
 		$this->pagelines_woocommerce_tabs();
 	}
 
+	
+
 
 	function woocommerce_product_meta($d) {
+		global $metapanel_options;
+	
+
 		 $meta = array(
             'woocommerce_templates' => array(
-                'metapanel' => $metapanel_options->posts_metapanel( 'woocommerce_templates', 'woocommerce_templates' ),
+                'metapanel' => $metapanel_options->posts_metapanel( 'product' ),
                 'icon'      => $this->base_url.'/icon.png'
+                
             )
         );
         $d = array_merge($d, $meta);
-
+        
         return $d;
 	}
 	
@@ -287,6 +347,15 @@ class WC_Pagelines {
 		$less .= pl_file_get_contents( sprintf( '%s/style.less', $this->base_dir ) );
 		return $less;
 		
+	}
+
+	/**
+	 *	Register our css and enqueue */
+
+	 function head_css() {
+		$style = sprintf( '%s/%s', $this->base_url, 'css/style.css' );		
+		wp_register_style( 'pl-woocommerce', $style );
+		wp_enqueue_style( 'pl-woocommerce' );	
 	}
 	 	
 	/**
